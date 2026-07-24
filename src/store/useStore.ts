@@ -248,3 +248,11 @@ export const getDurationLegend = (stage: EducationStage): string => {
   }
   return legends[stage]
 }
+
+export const EDUCATION_STAGES = [
+  { value: 'anos-iniciais' as EducationStage, label: 'Anos Iniciais' },
+  { value: 'anos-finais' as EducationStage, label: 'Anos Finais' },
+  { value: 'eja' as EducationStage, label: 'EJA' },
+]
+
+export const DURATION_OPTIONS = [30, 40, 45, 50, 55, 60, 75, 90, 100, 120]
