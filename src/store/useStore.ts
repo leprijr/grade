@@ -2,7 +2,6 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type {
   User,
-  UserRole,
   School,
   VisualIdentity,
   EducationStage,
@@ -10,8 +9,6 @@ import type {
   DurationOption,
   CSVRow,
   AppState,
-  DEFAULT_DURATION_BY_STAGE_DEFAULT,
-  DEFAULT_DURATION_BY_STAGE,
 } from '../types'
 
 const DEFAULT_VISUAL_IDENTITY: VisualIdentity = {
