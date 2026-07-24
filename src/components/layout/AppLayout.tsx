@@ -22,7 +22,7 @@ export function AppLayout({ children }: AppLayoutProps) {
           {children || <Outlet />}
         </main>
         <footer className="border-t p-4 text-center text-sm text-muted-foreground lg:pl-64" style={{ borderColor: primaryColor }}>
-          GradeEscolar - Sistema de Gestão Escolar
+          Gestão de Grades - Sistema de Gestão Escolar
         </footer>
       </div>
     </div>

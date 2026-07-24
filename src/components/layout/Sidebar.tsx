@@ -53,7 +53,7 @@ export function Sidebar() {
       >
         <div className="flex h-full flex-col">
           <div className="flex h-16 items-center justify-between border-b px-4 lg:justify-center">
-            <h1 className="text-xl font-bold text-primary">GradeEscolar</h1>
+            <h1 className="text-xl font-bold text-primary">Gestão de Grades</h1>
             <Button
               className="lg:hidden"
               variant="ghost"

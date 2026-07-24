@@ -56,7 +56,7 @@ export function Login() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 mb-4 shadow-lg shadow-blue-500/25">
             <Mail className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">GradeEscolar</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Gestão de Grades</h1>
           <p className="text-gray-500 mt-1">Sistema de Gestão Escolar</p>
         </div>
 
@@ -177,7 +177,7 @@ export function Login() {
           <CardFooter className="pt-0 pb-6 flex justify-center">
             <p className="text-xs text-gray-400 flex items-center gap-1">
               <Shield className="h-3 w-3" />
-              GradeEscolar v1.0 &copy; 2024
+              Gestão de Grades v1.0 &copy; 2024
             </p>
           </CardFooter>
         </Card>
