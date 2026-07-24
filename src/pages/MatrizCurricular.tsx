@@ -127,7 +127,7 @@ export function MatrizCurricular() {
       importCSV(csv)
       setIsImportDialogOpen(false)
       setImportFile(null)
-    } catch (error) {
+    } catch {
       alert('Erro ao importar arquivo CSV')
     } finally {
       setIsImporting(false)
