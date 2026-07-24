@@ -4,6 +4,7 @@ import { useAuth } from '@/context/AuthContext'
 import { useStore } from '@/store/useStore'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { BookOpen, Building, Users, Palette, GraduationCap } from 'lucide-react'
+import { NavLink } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 
 export function DashboardHome() {
@@ -28,15 +29,17 @@ export function DashboardHome() {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {filteredStats.map((stat) => (
-          <Card key={stat.name} className="cursor-pointer hover:shadow-md transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{stat.name}</CardTitle>
-              <stat.icon className={cn('h-4 w-4', stat.color)} />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
-          </Card>
+          <NavLink key={stat.name} to={stat.href} className="block">
+            <Card className="cursor-pointer hover:shadow-md transition-all hover:-translate-y-0.5 hover:bg-accent/50 border-primary/10 group">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium group-hover:text-primary transition-colors">{stat.name}</CardTitle>
+                <stat.icon className={cn('h-4 w-4', stat.color)} />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{stat.value}</div>
+              </CardContent>
+            </Card>
+          </NavLink>
         ))}
       </div>
 
@@ -46,32 +49,32 @@ export function DashboardHome() {
             <CardTitle>Ações Rápidas</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
-            <a href="/dashboard/matriz" className="block p-3 rounded-lg border hover:bg-accent transition-colors">
+            <NavLink to="/dashboard/matriz" className="block p-3 rounded-lg border hover:bg-accent hover:border-primary/50 hover:shadow-sm transition-all cursor-pointer">
               <div className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-primary" />
-                <span>Gerenciar Matriz Curricular</span>
+                <span className="font-medium">Gerenciar Matriz Curricular</span>
               </div>
-            </a>
+            </NavLink>
             {user?.role === 'admin' && (
               <>
-                <a href="/dashboard/escolas" className="block p-3 rounded-lg border hover:bg-accent transition-colors">
+                <NavLink to="/dashboard/escolas" className="block p-3 rounded-lg border hover:bg-accent hover:border-primary/50 hover:shadow-sm transition-all cursor-pointer">
                   <div className="flex items-center gap-2">
                     <Building className="h-5 w-5 text-primary" />
-                    <span>Gerenciar Escolas</span>
+                    <span className="font-medium">Gerenciar Escolas</span>
                   </div>
-                </a>
-                <a href="/dashboard/usuarios" className="block p-3 rounded-lg border hover:bg-accent transition-colors">
+                </NavLink>
+                <NavLink to="/dashboard/usuarios" className="block p-3 rounded-lg border hover:bg-accent hover:border-primary/50 hover:shadow-sm transition-all cursor-pointer">
                   <div className="flex items-center gap-2">
                     <Users className="h-5 w-5 text-primary" />
-                    <span>Gerenciar Usuários</span>
+                    <span className="font-medium">Gerenciar Usuários</span>
                   </div>
-                </a>
-                <a href="/dashboard/identidade" className="block p-3 rounded-lg border hover:bg-accent transition-colors">
+                </NavLink>
+                <NavLink to="/dashboard/identidade" className="block p-3 rounded-lg border hover:bg-accent hover:border-primary/50 hover:shadow-sm transition-all cursor-pointer">
                   <div className="flex items-center gap-2">
                     <Palette className="h-5 w-5 text-primary" />
-                    <span>Configurar Identidade Visual</span>
+                    <span className="font-medium">Configurar Identidade Visual</span>
                   </div>
-                </a>
+                </NavLink>
               </>
             )}
           </CardContent>
