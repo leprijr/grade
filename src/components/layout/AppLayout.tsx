@@ -3,6 +3,7 @@
 import { ReactNode } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
+import { IdleTimeoutWarning } from './IdleTimeoutWarning'
 import { useStore } from '@/store/useStore'
 import { cn } from '@/lib/utils'
 
@@ -24,6 +25,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         <footer className="border-t p-4 text-center text-sm text-muted-foreground lg:pl-64" style={{ borderColor: primaryColor }}>
           Gestão de Grades - Sistema de Gestão Escolar
         </footer>
+        <IdleTimeoutWarning />
       </div>
     </div>
   )

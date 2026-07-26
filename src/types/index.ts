@@ -24,6 +24,7 @@ export interface VisualIdentity {
   secondaryColor: string
   logo?: string | null
   favicon?: string | null
+  favicon16?: string | null
 }
 
 export interface CurriculumComponent {
