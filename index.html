@@ -7,13 +7,22 @@
     <title>Gestão de Grades - Sistema de Gestão Escolar</title>
     <script>
       // SPA redirect handling for GitHub Pages
+      // Restore route from 404.html redirect: /grade/?/dashboard/matriz -> /dashboard/matriz
       (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
+        // Case 1: Standard SPA redirect (rafgraph/spa-github-pages format)
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
             return s.replace(/~and~/g, '&')
           }).join('?');
           window.history.replaceState(null, null,
               l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+        // Case 2: Our custom 404.html redirect format: /grade/?/dashboard/matriz
+        else if (l.search.startsWith('?/') || l.search.startsWith('?/dashboard/')) {
+          var path = l.search.slice(1); // Remove leading ?
+          window.history.replaceState(null, null,
+              l.pathname + path + l.hash
           );
         }
       }(window.location))
