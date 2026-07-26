@@ -7,8 +7,11 @@ import { MatrizCurricular } from '@/pages/MatrizCurricular'
 import { Escolas } from '@/pages/Escolas'
 import { Usuarios } from '@/pages/Usuarios'
 import { IdentidadeVisual } from '@/pages/IdentidadeVisual'
+import { useIdleTimeout } from '@/hooks/useIdleTimeout'
 
 export default function App() {
+  useIdleTimeout()
+  
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
