@@ -2,6 +2,7 @@
 
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
+import { useStore } from '@/store/useStore'
 import {
   LayoutDashboard,
   Users,
@@ -26,11 +27,15 @@ const navigation = [
 
 export function Sidebar() {
   const { user, logout } = useAuth()
+  const { identity } = useStore()
   const [isOpen, setIsOpen] = useState(false)
 
   const filteredNavigation = navigation.filter((item) =>
     user ? item.roles.includes(user.role) : false
   )
+
+  const logoUrl = identity?.logo
+  const primaryColor = identity?.primaryColor || '#2563eb'
 
   return (
     <>
@@ -52,8 +57,16 @@ export function Sidebar() {
         aria-label="Menu lateral"
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-between border-b px-4 lg:justify-center">
-            <h1 className="text-xl font-bold text-primary">Gestão de Grades</h1>
+          <div className="flex h-16 items-center justify-between border-b px-4 lg:justify-center" style={{ borderColor: primaryColor }}>
+            {logoUrl ? (
+              <img
+                src={logoUrl}
+                alt="Logo da escola"
+                className="h-10 w-auto"
+              />
+            ) : (
+              <h1 className="text-xl font-bold text-primary">Gestão de Grades</h1>
+            )}
             <Button
               className="lg:hidden"
               variant="ghost"

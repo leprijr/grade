@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
+import { useStore } from '@/store/useStore'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -12,6 +13,7 @@ import { Lock, Loader2, Eye, EyeOff, Shield, User, Mail, Check } from 'lucide-re
 export function Login() {
   const navigate = useNavigate()
   const { login, isLoading: authLoading } = useAuth()
+  const { identity } = useStore()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -53,9 +55,13 @@ export function Login() {
       <div className="w-full max-w-md">
         {/* Logo/Brand */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 mb-4 shadow-lg shadow-blue-500/25">
-            <Mail className="h-8 w-8 text-white" />
-          </div>
+          {identity?.logo ? (
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 shadow-lg" style={{ backgroundImage: `url(${identity.logo})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          ) : (
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 mb-4 shadow-lg shadow-blue-500/25">
+              <Mail className="h-8 w-8 text-white" />
+            </div>
+          )}
           <h1 className="text-2xl font-bold text-gray-900">Gestão de Grades</h1>
           <p className="text-gray-500 mt-1">Sistema de Gestão Escolar</p>
         </div>

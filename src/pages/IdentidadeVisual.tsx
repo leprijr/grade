@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '@/store/useStore'
 import { useAuth } from '@/context/AuthContext'
+import { useToast } from '@/components/ui/toast'
 import {
   Card, CardContent, CardHeader, CardTitle, CardDescription,
 } from '@/components/ui/card'
@@ -39,6 +40,7 @@ function generateFaviconFromLogo(logoDataUrl: string): Promise<{ favicon32: stri
 export function IdentidadeVisual() {
   const { user } = useAuth()
   const { identity, updateIdentity } = useStore()
+  const { toast } = useToast()
   const isAdmin = user?.role === 'admin'
 
   const [isSaving, setIsSaving] = useState(false)
@@ -64,6 +66,17 @@ export function IdentidadeVisual() {
         logo: logoPreview,
         favicon: faviconPreview,
         favicon16: favicon16Preview,
+      })
+      toast({
+        title: 'Sucesso',
+        description: 'Identidade visual salva com sucesso',
+        variant: 'default',
+      })
+    } catch (error) {
+      toast({
+        title: 'Erro',
+        description: 'Não foi possível salvar as alterações',
+        variant: 'destructive',
       })
     } finally {
       setIsSaving(false)
